@@ -10,14 +10,15 @@
 
 void pop(stack_t **stack, unsigned int line_number)
 {
-    if (!*stack)
-    {
-        dprintf("L%u: can't pop an empty stack\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-    stack_t *node = *stack;
-    *stack = node->next;
-    if (*stack)
-        (*stack)->prev = NULL;
-    free(node);
+	if (!*stack)
+	{
+		dprintf("L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	stack_t *node = *stack;
+
+	*stack = node->next;
+	if (*stack)
+		(*stack)->prev = NULL;
+	free(node);
 }
