@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -41,6 +44,7 @@ void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+int execute(stack_t **stack, char *line, unsigned int count, FILE *fp);
 
 instruction_t opcodes[] = {
         {"push", push},

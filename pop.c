@@ -10,12 +10,13 @@
 
 void pop(stack_t **stack, unsigned int line_number)
 {
+	stack_t *node;
 	if (!*stack)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	stack_t *node = *stack;
+	node = *stack;
 
 	*stack = node->next;
 	if (*stack)

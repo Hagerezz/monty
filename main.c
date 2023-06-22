@@ -8,6 +8,8 @@
 
 int main(int argc, char **argv)
 {
+	stack_t *stack = NULL;
+	unsigned int count = 0;
 	FILE *fp;
 	char *line = NULL;
 	size_t len = 0;
@@ -27,9 +29,48 @@ int main(int argc, char **argv)
 	while (nread > 0)
 	{
 		nread = getline(&line, &len, stdin);
+		count++;
 		if (nread > 0)
 		{
-			//operation
+			execute(&stack, line, count, fp);
 		}
+		free(line);
 	}
+	free_stack(*stack);
+	fclose(fp);
+	return (0);
+}
+/**
+ * execute - execute the code
+ * @stack: double pointer
+ * @line: pointer
+ * @count: counter
+ * @fp: file
+ * Return: 0 (success);
+ */
+
+int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
+{
+    unsigned int i = 0;
+	char *opcode = strtok(line, " \n\t");
+    /*char *args  = strtok(NULL, " \n\t");*/
+
+	if (opcode && opcode[0] == '#')
+		return (0);
+	while (opcodes[i].opcode && opcode)
+	{
+		if (strcmp(opcode, opcodes[i].opcode) == 0)
+		{	opcodes[i].f(stack, count);
+			return (0);
+		}
+		i++;
+	}
+	if (opcode && opcodes[i].opcode == NULL)
+	{
+        fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
+		fclose(fp);
+		free(line);
+		free_stack(*stack);
+		exit(EXIT_FAILURE); }
+	return (1);
 }
