@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		count++;
 		execute(&stack, line, count, fp);
 	}
-	free_stack(*stack);
+	free_stack(stack);
 	fclose(fp);
 	return (0);
 }
