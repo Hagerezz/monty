@@ -15,7 +15,7 @@ void add(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	first->next->n = first-> next->n + first->n;
+	first->next->n = first->next->n + first->n;
 	*stack = first->next;
 	free(first);
 }

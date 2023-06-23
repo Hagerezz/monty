@@ -4,6 +4,7 @@
  * main - read the line
  * @argc: integer
  * @argv: pointer to an array
+ * Return: 0 Always
  */
 
 int main(int argc, char **argv)
@@ -46,14 +47,14 @@ int main(int argc, char **argv)
 int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
 {
 	instruction_t opcodes[] = {
-        {"push", push},
-        {"pint", pint},
-        {"pall", pall},
-        {"pop", pop},
-        {"swap", swap},
-        {"add", add},
-        {"nop", nop},
-        {NULL, NULL}
+	{"push", push},
+	{"pint", pint},
+	{"pall", pall},
+	{"pop", pop},
+	{"swap", swap},
+	{"add", add},
+	{"nop", nop},
+	{NULL, NULL}
 	};
 
 	unsigned int i = 0;
@@ -72,7 +73,7 @@ int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
 	}
 	if (opcode && opcodes[i].opcode == NULL)
 	{
-        	fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
 		fclose(fp);
 		free(line);
 		free_stack(*stack);

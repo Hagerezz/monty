@@ -7,7 +7,7 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	int n;
+	int n, i = 1;
 	char *arg = strtok(NULL, " \n\t\r");
 	stack_t *new_node;
 
@@ -15,6 +15,15 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
+	}
+	while (arg[i] != '\0')
+	{
+		if (arg[i] > '9' || arg[i] < '0')
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+		i++;
 	}
 	new_node = malloc(sizeof(stack_t));
 
