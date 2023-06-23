@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 		count++;
 		execute(&stack, line, count, fp);
 	}
-	free(stack);
+	free_stack(*stack);
 	fclose(fp);
 	return (0);
 }
@@ -75,8 +75,20 @@ int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
         	fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
 		fclose(fp);
 		free(line);
-		free(stack);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	return (1);
+}
+/**
+ * free_stack - free the stack
+ * @stack: pointer
+ */
+void free_stack(stack_t *stack)
+{
+	if (stack == NULL)
+		return;
+	if (stack->next != NULL)
+		free_stack(stack->next);
+	free(stack);
 }
