@@ -11,32 +11,26 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int count = 0;
 	FILE *fp;
-	char *line = NULL;
-	size_t len = 0;
-	ssize_t nread = 1;
+	char line[1024];
+	size_t len = 1024;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fp = fopen("argv[1]", "r");
+	fp = fopen(argv[1], "r");
 	if (fp == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (nread > 0)
+	while (fgets(line, len, fp) != NULL)
 	{
-		nread = getline(&line, &len, stdin);
 		count++;
-		if (nread > 0)
-		{
-			execute(&stack, line, count, fp);
-		}
-		free(line);
+		execute(&stack, line, count, fp);
 	}
-	free_stack(*stack);
+	free(stack);
 	fclose(fp);
 	return (0);
 }
@@ -46,7 +40,7 @@ int main(int argc, char **argv)
  * @line: pointer
  * @count: counter
  * @fp: file
- * Return: 0 (success);
+ * Return: 1 (success);
  */
 
 int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
@@ -70,7 +64,7 @@ int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
         fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
 		fclose(fp);
 		free(line);
-		free_stack(*stack);
+		free(stack);
 		exit(EXIT_FAILURE); }
 	return (1);
 }
