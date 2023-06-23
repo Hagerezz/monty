@@ -2,9 +2,9 @@
 
 /**
  * pop - pop to exit element from stack
- * @stack : stack_t
- * @line_number : number of lines in stacl
- * Return : stack node and empty stck
+ * @stack: stack_t
+ * @line_number: number of lines in stacl
+ * Return: stack node and empty stck
  *
  */
 

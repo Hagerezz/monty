@@ -2,10 +2,8 @@
 
 /**
  * swap - to extchange between two elements
- * @stack : stack number
- * @line_number : line number
- *
- * Return :
+ * @stack: stack number
+ * @line_number: line number
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
