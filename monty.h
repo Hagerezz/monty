@@ -46,15 +46,5 @@ void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 int execute(stack_t **stack, char *line, unsigned int count, FILE *fp);
 
-instruction_t opcodes[] = {
-        {"push", push},
-        {"pint", pint},
-        {"pall", pall},
-        {"pop", pop},
-        {"swap", swap},
-        {"add", add},
-        {"nop", nop},
-        {NULL, NULL}
-};
 
 #endif
