@@ -54,6 +54,9 @@ int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
 	{"swap", swap},
 	{"add", add},
 	{"nop", nop},
+	{"sub", sub},
+	{"mul", mul},
+	{"div", divide}, {"mod", mod},
 	{NULL, NULL}
 	};
 
