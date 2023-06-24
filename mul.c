@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * mul: multiplication
+ * mul - multiplication
  * @stack: double pointer
  * @line_number: integar
 */
