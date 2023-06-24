@@ -75,7 +75,6 @@ int execute(stack_t **stack, char *line, unsigned int count, FILE *fp)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
 		fclose(fp);
-		free(line);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
