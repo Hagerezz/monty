@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * divide: divide
+ * divide - divide
  * @stack: double pointer
  * @line_number: integar
 */
