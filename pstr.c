@@ -20,8 +20,8 @@ void pstr(stack_t **stack, unsigned int line_number)
 	{
 		if (first->n <= 0 || first->n > 127)
 			break;
-			a[i++] = first->n;
-			first = first->next;
+		a[i++] = first->n;
+		first = first->next;
 	}
 	fprintf(stdout, "%s\n", a);
 }
