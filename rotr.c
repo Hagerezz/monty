@@ -2,7 +2,7 @@
 
 /**
  * rotr - rotates the stack to the bottom
- * @ stack: double pointer
+ * @stack: double pointer
  * @line_number: integar
  */
 void rotr(stack_t **stack, unsigned int line_number)
