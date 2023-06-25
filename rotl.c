@@ -3,7 +3,7 @@
 /**
  * rotl - rotates the stack to the top
  * @stack: double pointer
- * @@line_number: integar
+ * @line_number: integar
 */
 void rotl(stack_t **stack, unsigned int line_number)
 {
