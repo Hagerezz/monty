@@ -23,5 +23,6 @@ void pstr(stack_t **stack, unsigned int line_number)
 		a[i++] = first->n;
 		first = first->next;
 	}
-	fprintf(stdout, "%s\n", a);
+	if (*stack)
+		fprintf(stdout, "%s\n", a);
 }
