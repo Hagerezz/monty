@@ -11,7 +11,7 @@ void rotl(stack_t **stack, unsigned int line_number)
 	stack_t *last;
 	(void)line_number;
 
-	if (!first)
+	if (!first || !first->next)
 	{
 		return;
 	}
