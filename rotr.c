@@ -11,6 +11,10 @@ void rotr(stack_t **stack, unsigned int line_number)
 	stack_t *last;
 	(void)line_number;
 
+	if (!first || !first->next)
+	{
+		return;
+	}
 	while (first->next != NULL)
 	{
 		last = first;
